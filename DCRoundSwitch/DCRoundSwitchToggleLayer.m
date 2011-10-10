@@ -12,17 +12,22 @@
 #import "DCRoundSwitchToggleLayer.h"
 
 @implementation DCRoundSwitchToggleLayer
-@synthesize onString, offString, onTintColor;
+@synthesize onString, offString, onTintColor, offTintColor, onTextColor, onTextShadowColor, offTextColor, offTextShadowColor, onImage, offImage;
 @synthesize drawOnTint;
 @synthesize clip;
 @synthesize labelFont;
 
 - (void)dealloc
 {
+    [onTextColor release];
+    [offTextColor release];
+    [onImage release];
+    [offImage release];
 	[onString release];
 	[offString release];
 	[onTintColor release];
-
+    [offTintColor release];
+    
 	[super dealloc];
 }
 
@@ -33,6 +38,11 @@
 		self.onString = anOnString;
 		self.offString = anOffString;
 		self.onTintColor = anOnTintColor;
+        self.offTintColor = [UIColor colorWithWhite:0.963 alpha:1.0];
+        self.onTextColor = [UIColor whiteColor];
+        self.onTextShadowColor = [UIColor colorWithWhite:0.45 alpha:1.0];
+        self.offTextColor = [UIColor colorWithWhite:0.52 alpha:1.0];
+        self.offTextShadowColor = [UIColor whiteColor];
 	}
 
 	return self;
@@ -64,7 +74,7 @@
 	}
 
 	// off tint color (white)
-	CGContextSetFillColorWithColor(context, [UIColor colorWithWhite:0.963 alpha:1.0].CGColor);
+	CGContextSetFillColorWithColor(context, offTintColor.CGColor);
 	CGContextFillRect(context, CGRectMake(knobCenter, 0, self.bounds.size.width - knobCenter, self.bounds.size.height));
 
 	// knob shadow
@@ -73,28 +83,50 @@
 	CGContextSetLineWidth(context, 1.0);
 	CGContextStrokeEllipseInRect(context, knobRect);
 	CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 0, NULL);
-	
 
-	// strings
+	// strings and images
 	CGFloat textSpaceWidth = (self.bounds.size.width / 2) - (knobRadius / 2);
 
 	UIGraphicsPushContext(context);
 
-	// 'ON' state label (self.onString)
-	CGSize onTextSize = [self.onString sizeWithFont:self.labelFont];
-	CGPoint onTextPoint = CGPointMake((textSpaceWidth - onTextSize.width) / 2.0 + knobRadius * .15, floorf((self.bounds.size.height - onTextSize.height) / 2.0) + 1.0);
-	[[UIColor colorWithWhite:0.45 alpha:1.0] set]; // .2 & .4
-	[self.onString drawAtPoint:CGPointMake(onTextPoint.x, onTextPoint.y - 1.0) withFont:self.labelFont];
-	[[UIColor whiteColor] set];
-	[self.onString drawAtPoint:onTextPoint withFont:self.labelFont];
+    if (!IsEmpty(self.onImage))
+    {
+        //'ON' Image
+        CGSize onImageSize = [self.onImage size];
+        CGPoint onImagePoint = CGPointMake((textSpaceWidth - onImageSize.width) / 2.0 + knobRadius * .15, floorf((self.bounds.size.height - onImageSize.height) / 2.0) + 1.0);
+        [self.onImage drawAtPoint:onImagePoint];
+    }
 
-	// 'OFF' state label (self.offString)
-	CGSize offTextSize = [self.offString sizeWithFont:self.labelFont];
-	CGPoint offTextPoint = CGPointMake(textSpaceWidth + (textSpaceWidth - offTextSize.width) / 2.0 + knobRadius * .86, floorf((self.bounds.size.height - offTextSize.height) / 2.0) + 1.0);
-	[[UIColor whiteColor] set];
-	[self.offString drawAtPoint:CGPointMake(offTextPoint.x, offTextPoint.y + 1.0) withFont:self.labelFont];
-	[[UIColor colorWithWhite:0.52 alpha:1.0] set];
-	[self.offString drawAtPoint:offTextPoint withFont:self.labelFont];
+
+    if (!IsEmpty(self.onString))
+    {
+        // 'ON' state label (self.onString)
+        CGSize onTextSize = [self.onString sizeWithFont:self.labelFont];
+        CGPoint onTextPoint = CGPointMake((textSpaceWidth - onTextSize.width) / 2.0 + knobRadius * .15, floorf((self.bounds.size.height - onTextSize.height) / 2.0) + 1.0);
+        [onTextShadowColor set]; // .2 & .4
+        [self.onString drawAtPoint:CGPointMake(onTextPoint.x, onTextPoint.y - 1.0) withFont:self.labelFont];
+        [onTextColor set];
+        [self.onString drawAtPoint:onTextPoint withFont:self.labelFont];
+    }
+
+    if (!IsEmpty(self.offImage))
+    {
+        // 'OFF' Image
+        CGSize offImageSize = [self.offImage size];
+        CGPoint offImagePoint = CGPointMake(textSpaceWidth + (textSpaceWidth - offImageSize.width) / 2.0 + knobRadius * .86, floorf((self.bounds.size.height - offImageSize.height) / 2.0) + 1.0);
+        [self.offImage drawAtPoint:offImagePoint];
+    }
+
+    if (!IsEmpty(self.offString))
+    {
+        // 'OFF' state label (self.offString)
+        CGSize offTextSize = [self.offString sizeWithFont:self.labelFont];
+        CGPoint offTextPoint = CGPointMake(textSpaceWidth + (textSpaceWidth - offTextSize.width) / 2.0 + knobRadius * .86, floorf((self.bounds.size.height - offTextSize.height) / 2.0) + 1.0);
+        [offTextShadowColor set];
+        [self.offString drawAtPoint:CGPointMake(offTextPoint.x, offTextPoint.y + 1.0) withFont:self.labelFont];
+        [offTextColor set];
+        [self.offString drawAtPoint:offTextPoint withFont:self.labelFont];
+    }   
 
 	UIGraphicsPopContext();
 }

@@ -45,10 +45,17 @@
 
 	self.switch2.onTintColor = [UIColor redColor];
 	self.switch2.on = YES;
+    self.switch2.offTintColor = [UIColor lightGrayColor];
+    self.switch2.offTextColor = [UIColor whiteColor];
+    self.switch2.offTextShadowColor = [UIColor colorWithWhite:0.45 alpha:1.0];
 
-	self.switch3.onTintColor = [UIColor blackColor];
+	self.switch3.onTintColor = [UIColor colorWithRed:203/255.0f green:165/255.0f blue:205/255.0f alpha:1];
 	self.switch3.on = YES;
 	[self.switch3 addTarget:self action:@selector(switch3Toggled:) forControlEvents:UIControlEventValueChanged];
+    self.switch3.onText = @"";
+    self.switch3.offText = @"";
+    self.switch3.onImage = [UIImage imageNamed:@"Smile.png"];
+    self.switch3.offImage = [UIImage imageNamed:@"Frown.png"];
 
 	self.fatSwitch.onText = @"1";
 	self.fatSwitch.offText = @"0";

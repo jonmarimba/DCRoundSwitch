@@ -35,6 +35,10 @@
 		AB6FE67713C44146006BCDBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB6FE5DB13C420A3006BCDBB /* InfoPlist.strings */; };
 		AB6FE67813C44146006BCDBB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6FE5E413C420A3006BCDBB /* MainWindow.xib */; };
 		AB6FE67913C44146006BCDBB /* DCRoundSwitchDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6FE5EA13C420A3006BCDBB /* DCRoundSwitchDemoViewController.xib */; };
+		ABA8106A1442A6AA007C4A3F /* Frown.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA810681442A6AA007C4A3F /* Frown.png */; };
+		ABA8106B1442A6AA007C4A3F /* Frown.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA810681442A6AA007C4A3F /* Frown.png */; };
+		ABA8106C1442A6AA007C4A3F /* Smile.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA810691442A6AA007C4A3F /* Smile.png */; };
+		ABA8106D1442A6AA007C4A3F /* Smile.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA810691442A6AA007C4A3F /* Smile.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,9 @@
 		AB6FE60213C420D6006BCDBB /* DCRoundSwitchToggleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRoundSwitchToggleLayer.m; sourceTree = "<group>"; };
 		AB6FE60813C420DF006BCDBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AB6FE67D13C44146006BCDBB /* DCRoundSwitchDemo copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DCRoundSwitchDemo copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABA810681442A6AA007C4A3F /* Frown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frown.png; sourceTree = "<group>"; };
+		ABA810691442A6AA007C4A3F /* Smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smile.png; sourceTree = "<group>"; };
+		ABA8106E1442A6CA007C4A3F /* SBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBUtils.h; path = ../../DCRoundSwitch/SBUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +129,8 @@
 		AB6FE5D813C420A3006BCDBB /* DCRoundSwitchDemo */ = {
 			isa = PBXGroup;
 			children = (
+				ABA810681442A6AA007C4A3F /* Frown.png */,
+				ABA810691442A6AA007C4A3F /* Smile.png */,
 				AB6FE5FA13C420D6006BCDBB /* DCRoundSwitch */,
 				AB6FE5E113C420A3006BCDBB /* DCRoundSwitchDemoAppDelegate.h */,
 				AB6FE5E213C420A3006BCDBB /* DCRoundSwitchDemoAppDelegate.m */,
@@ -137,6 +146,7 @@
 		AB6FE5D913C420A3006BCDBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABA8106E1442A6CA007C4A3F /* SBUtils.h */,
 				AB6FE5DA13C420A3006BCDBB /* DCRoundSwitchDemo-Info.plist */,
 				AB6FE5DB13C420A3006BCDBB /* InfoPlist.strings */,
 				AB6FE5DE13C420A3006BCDBB /* DCRoundSwitchDemo-Prefix.pch */,
@@ -229,6 +239,8 @@
 				AB6FE5DD13C420A3006BCDBB /* InfoPlist.strings in Resources */,
 				AB6FE5E613C420A3006BCDBB /* MainWindow.xib in Resources */,
 				AB6FE5EC13C420A3006BCDBB /* DCRoundSwitchDemoViewController.xib in Resources */,
+				ABA8106A1442A6AA007C4A3F /* Frown.png in Resources */,
+				ABA8106C1442A6AA007C4A3F /* Smile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +251,8 @@
 				AB6FE67713C44146006BCDBB /* InfoPlist.strings in Resources */,
 				AB6FE67813C44146006BCDBB /* MainWindow.xib in Resources */,
 				AB6FE67913C44146006BCDBB /* DCRoundSwitchDemoViewController.xib in Resources */,
+				ABA8106B1442A6AA007C4A3F /* Frown.png in Resources */,
+				ABA8106D1442A6AA007C4A3F /* Smile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

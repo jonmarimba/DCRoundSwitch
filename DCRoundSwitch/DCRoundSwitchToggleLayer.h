@@ -15,6 +15,13 @@
 @interface DCRoundSwitchToggleLayer : CALayer
 
 @property (nonatomic, retain) UIColor *onTintColor;
+@property (nonatomic, retain) UIColor *offTintColor;
+@property (nonatomic, retain) UIColor *onTextColor;
+@property (nonatomic, retain) UIColor *onTextShadowColor;
+@property (nonatomic, retain) UIColor *offTextColor;
+@property (nonatomic, retain) UIColor *offTextShadowColor;
+@property (nonatomic, retain) UIImage *onImage;
+@property (nonatomic, retain) UIImage *offImage;
 @property (nonatomic, retain) NSString *onString;
 @property (nonatomic, retain) NSString *offString;
 @property (nonatomic, readonly) UIFont *labelFont;

@@ -24,18 +24,13 @@
 @end
 
 @implementation DCRoundSwitch
-@synthesize on, onText, offText;
-@synthesize onTintColor;
+@synthesize on;
 
 #pragma mark -
 #pragma mark Init & Memory Managment
 
 - (void)dealloc
 {
-	[onTintColor release];
-	[onText release];
-	[offText release];
-
 	[super dealloc];
 }
 
@@ -104,7 +99,12 @@
 	// this is the knob, and sits on top of the layer stack. note that the knob shadow is NOT drawn here, it is drawn on the
 	// toggleLayer so it doesn't bleed out over the outlineLayer.
 
-	toggleLayer = [[DCRoundSwitchToggleLayer alloc] initWithOnString:self.onText offString:self.offText onTintColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
+	toggleLayer = [[DCRoundSwitchToggleLayer alloc] initWithOnString:@"ON"
+                                                           offString:@"OFF" 
+                                                         onTintColor:[UIColor colorWithRed:0.000 
+                                                                                     green:0.478
+                                                                                      blue:0.882 
+                                                                                     alpha:1.0]];
 	toggleLayer.drawOnTint = NO;
 	toggleLayer.clip = YES;
 	[self.layer addSublayer:toggleLayer];
@@ -366,16 +366,6 @@
 	}];
 }
 
-- (void)setOnTintColor:(UIColor *)anOnTintColor
-{
-	if (anOnTintColor != onTintColor)
-	{
-		[onTintColor release];
-		onTintColor = [anOnTintColor retain];
-		toggleLayer.onTintColor = anOnTintColor;
-		[toggleLayer setNeedsDisplay];
-	}
-}
 
 - (void)setFrame:(CGRect)aFrame
 {
@@ -405,26 +395,106 @@
 	[self positionLayersAndMask];
 }
 
-- (void)setOnText:(NSString *)newOnText
+-(UIColor *)onTintColor
 {
-	if (newOnText != onText)
-	{
-		[onText release];
-		onText = [newOnText copy];
-		toggleLayer.onString = onText;
-		[toggleLayer setNeedsDisplay];
-	}
+    return toggleLayer.onTintColor;
+}
+-(void)setOnTintColor:(UIColor *)onTintColor
+{
+    [toggleLayer setOnTintColor:onTintColor];
+    [toggleLayer setNeedsDisplay];
 }
 
-- (void)setOffText:(NSString *)newOffText
+-(UIColor *)offTintColor
 {
-	if (newOffText != offText)
-	{
-		[offText release];
-		offText = [newOffText copy];
-		toggleLayer.offString = offText;
-		[toggleLayer setNeedsDisplay];
-	}
+    return toggleLayer.offTintColor;
 }
+-(void)setOffTintColor:(UIColor *)offTintColor
+{
+    [toggleLayer setOffTintColor:offTintColor];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(NSString *)onText
+{
+    return toggleLayer.onString;
+}
+-(void)setOnText:(NSString *)onText
+{
+    [toggleLayer setOnString:onText];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIColor *)onTextColor
+{
+    return toggleLayer.onTextColor;
+}
+-(void)setOnTextColor:(UIColor *)onTextColor
+{
+    [toggleLayer setOnTextColor:onTextColor];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIColor *)onTextShadowColor
+{
+    return toggleLayer.onTextShadowColor;
+}
+-(void)setOnTextShadowColor:(UIColor *)onTextShadowColor
+{
+    [toggleLayer setOnTextShadowColor:onTextShadowColor];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(NSString *)offText
+{
+    return toggleLayer.offString;
+}
+-(void)setOffText:(NSString *)offText
+{
+    [toggleLayer setOffString:offText];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIColor *)offTextColor
+{
+    return toggleLayer.offTextColor;
+}
+-(void)setOffTextColor:(UIColor *)offTextColor
+{
+    [toggleLayer setOffTextColor:offTextColor];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIColor *)offTextShadowColor
+{
+    return [toggleLayer offTextShadowColor];
+}
+-(void)setOffTextShadowColor:(UIColor *)offTextShadowColor
+{
+    [toggleLayer setOffTextShadowColor:offTextShadowColor];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIImage *)onImage
+{
+    return toggleLayer.onImage;
+}
+-(void)setOnImage:(UIImage *)onImage
+{
+    [toggleLayer setOnImage:onImage];
+    [toggleLayer setNeedsDisplay];
+}
+
+-(UIImage *)offImage
+{
+    return toggleLayer.offImage;
+    [toggleLayer setNeedsDisplay];
+}
+-(void)setOffImage:(UIImage *)offImage
+{
+    [toggleLayer setOffImage:offImage];
+    [toggleLayer setNeedsDisplay];
+}
+
 
 @end

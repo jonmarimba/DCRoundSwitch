@@ -26,10 +26,19 @@
 		BOOL ignoreTap;
 }
 
-@property (nonatomic, retain) UIColor *onTintColor;		// default: blue (matches normal UISwitch)
 @property (nonatomic, getter=isOn) BOOL on;				// default: NO
-@property (nonatomic, copy) NSString *onText;			// default: 'ON' - not automatically localized!
-@property (nonatomic, copy) NSString *offText;			// default: 'OFF' - not automatically localized!
+
+@property (nonatomic, retain) UIColor *onTintColor;		// default: blue (matches normal UISwitch)
+@property (nonatomic, retain) UIColor *offTintColor;    // default: white
+@property (nonatomic, copy)  NSString *onText;			// default: 'ON' - not automatically localized!
+@property (nonatomic, retain) UIColor *onTextColor;
+@property (nonatomic, retain) UIColor *onTextShadowColor;
+
+@property (nonatomic, copy)  NSString *offText;			// default: 'OFF' - not automatically localized!
+@property (nonatomic, retain) UIColor *offTextColor;
+@property (nonatomic, retain) UIColor *offTextShadowColor;
+@property (nonatomic, retain) UIImage *onImage;         // default: nil - drawn behind text
+@property (nonatomic, retain) UIImage *offImage;        // default: nil - drawn behind text
 
 - (void)setOn:(BOOL)newOn animated:(BOOL)animated;
 - (void)setOn:(BOOL)newOn animated:(BOOL)animated ignoreControlEvents:(BOOL)ignoreControlEvents;
