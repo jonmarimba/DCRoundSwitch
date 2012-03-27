@@ -27,7 +27,7 @@ SBWarn(@"[%@ %@]", self, NSStringFromSelector(_cmd));\
 #if defined(DEBUG) || defined (DEBUG_CONFIGURATION)
 #define SBLog NSLog
 #else
-#define SBLog  //  
+#define SBLog
 #endif
 
 #if TARGET_OS_IPHONE
